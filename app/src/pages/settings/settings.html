@@ -17,7 +17,7 @@
 
 	<div padding-top text-center>
 	 <img class="profile" src="http://www.gravatar.com/avatar?d=mm&s=140">
-	  <h2>{{username}}</h2>
+	  <h2>{{user.name}}</h2>
 	
 	<ion-item-group>
 	  <ion-item-divider light>Datos personales</ion-item-divider>
@@ -27,7 +27,7 @@
 	  </ion-item>
 	  <ion-item>
 	    <h2># de referencia</h2>
-	    <h3>{{user.phone}}</h3>
+	    <h3>{{user._id}}</h3>
 	  </ion-item>
 	</ion-item-group>
 
@@ -36,17 +36,15 @@
       <ion-item>
   	    <ion-icon name='card' item-left></ion-icon>
         	<ion-label>Metodo de pago </ion-label>
-            <ion-select [(ngModel)]="toppings" multiple="true" cancelText="Nah" okText="Okay!">
-              <ion-option value="bacon" checked="true">Bacon</ion-option>
-              <ion-option value="olives">Black Olives</ion-option>
+            <ion-select [(ngModel)]="defaultPaymentMethod" cancelText="Cancelar" okText="Guardar">
+              <ion-option *ngFor="let card of user.cards" [value]="card.id" >{{getNumber(card.number)}}</ion-option>
             </ion-select>
 	  	</ion-item>
-       <ion-item>
-  	    <ion-icon name='card' item-left></ion-icon>
-        	<ion-label>Cuenta depósito</ion-label>
-            <ion-select [(ngModel)]="toppings" multiple="true" cancelText="Nah" okText="Okay!">
-              <ion-option value="bacon" checked="true">Bacon</ion-option>
-              <ion-option value="olives">Black Olives</ion-option>
+	  	<ion-item>
+  	    	<ion-icon name='card' item-left></ion-icon>
+        	<ion-label>Cuentas deposito </ion-label>
+            <ion-select [(ngModel)]="defaultDepositMethod" cancelText="Cancelar" okText="Guardar">
+              <ion-option *ngFor="let card of user.cards" [value]="card.id" >{{getNumber(card.number)}}</ion-option>
             </ion-select>
 	  	</ion-item>
 	</ion-item-group>
@@ -56,25 +54,27 @@
 	  		Metodos de pago
 	  	</ion-item-divider>
 
-		<button ion-item>
-		    <ion-icon name="card" item-left></ion-icon>
+		<button (click)="addPayment()" ion-item>
 		    Agregar metodo de pago
 		</button>
 
-		<ion-item>
-		  **** **** **** 4532
-		  <ion-icon name='card' item-left></ion-icon>
-		</ion-item>
-
-		<ion-item>
-		  **** **** **** 4532
-		  <ion-icon name='card' item-left></ion-icon>
-		</ion-item>
-
-		<ion-item>
-		  **** **** **** 4532
-		  <ion-icon name='card' item-left></ion-icon>
-		</ion-item>
+		<ion-item-sliding *ngFor="let card of user.cards">
+		 
+            <ion-item>
+            	<ion-icon name="card"></ion-icon>
+                {{getNumber(card.number)}}
+            </ion-item>
+ 
+            <ion-item-options>
+                <button (click)="editCard(card)" light>
+                    <ion-icon name="paper"></ion-icon>
+                </button>
+                <button (click)="deleteCard(card)" danger>
+                    <ion-icon name="trash"></ion-icon>
+                </button>
+            </ion-item-options>
+ 
+        </ion-item-sliding>
 
 	</ion-item-group>
 

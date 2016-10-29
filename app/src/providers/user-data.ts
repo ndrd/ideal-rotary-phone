@@ -18,11 +18,6 @@ export class UserData {
   }
 
   loadUser() {
-    if (this.storage.get('user')) {
-      // already loaded data
-      return Promise.resolve(this.storage.get('user'));
-    }
-
     return new Promise(resolve => {
       // We're using Angular Http provider to request the data,
       // then on the response it'll map the JSON data to a parsed JS object.
@@ -31,7 +26,6 @@ export class UserData {
         // we've got back the raw data, now generate the core schedule data
         // and save the data for later reference
         this.user = (res.json());
-        this.storage.set('user', this.user);
         resolve(this.user);
       });
     });

@@ -5,6 +5,7 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { Settings } from '../pages/settings/settings';
+import { CardReader } from '../pages/utils/utils';
 import { TabsPage } from '../pages/tabs/tabs';
 import { UserData } from '../providers/user-data';
 import { Storage } from '@ionic/storage';
@@ -16,6 +17,7 @@ import { Storage } from '@ionic/storage';
     ContactPage,
     HomePage,
     Settings,
+    CardReader,
     TabsPage
   ],
   imports: [
@@ -28,6 +30,7 @@ import { Storage } from '@ionic/storage';
     ContactPage,
     HomePage,
     Settings,
+    CardReader,
     TabsPage
   ],
   providers: [UserData, Storage]
