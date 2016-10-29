@@ -6,6 +6,8 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { Settings } from '../pages/settings/settings';
 import { TabsPage } from '../pages/tabs/tabs';
+import { UserData } from '../providers/user-data';
+import { Storage } from '@ionic/storage';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,6 @@ import { TabsPage } from '../pages/tabs/tabs';
     Settings,
     TabsPage
   ],
-  providers: []
+  providers: [UserData, Storage]
 })
 export class AppModule {}

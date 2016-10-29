@@ -1,0 +1,37 @@
+{
+    "_id": "5814f91a9051c7aa7d2580d3",
+    "guid": "c22e5f99-187e-4159-92e0-0e1536903659",
+    "balance": "$3,661.18",
+    "picture": "http://placehold.it/32x32",
+    "name": "Osborn Olsen",
+    "email": "osbornolsen@anacho.com",
+    "phone": "+1 (931) 436-3927",
+    "cards": [
+      {
+        "active": true,
+        "number": "*** *** **** (910) 430-2264"
+      },
+      {
+        "active": true,
+        "number": "*** *** **** (896) 413-2651"
+      },
+      {
+        "active": true,
+        "number": "*** *** **** (986) 452-3068"
+      }
+    ],
+    "friends": [
+      {
+        "id": 0,
+        "name": "Rice Molina"
+      },
+      {
+        "id": 1,
+        "name": "Beulah Church"
+      },
+      {
+        "id": 2,
+        "name": "Lola Humphrey"
+      }
+    ]
+  }

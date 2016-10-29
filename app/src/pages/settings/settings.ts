@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { UserData } from '../../providers/user-data';
 
 /*
   Generated class for the Settings page.
@@ -13,7 +14,8 @@ import { NavController } from 'ionic-angular';
 })
 export class Settings {
 
-  constructor(public navCtrl: NavController) {}
+  constructor(public navCtrl: NavController,
+  			 public user: UserData) {}
 
   ionViewDidLoad() {
     console.log('Hello Settings Page');
