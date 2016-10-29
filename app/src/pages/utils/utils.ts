@@ -11,7 +11,7 @@ import { CardIO } from 'ionic-native';
   templateUrl: 'utils.html'
 })
 export class CardReader {
-  creditCard: {ccv?: string, cardNumber?: string, until? : string} = {};
+  creditCard: {ccv?: string, cardNumber?: string, until? : string, number? : string} = {};
   bannkAccount: { clabe? : string} = {};
   submitted = false;
 
