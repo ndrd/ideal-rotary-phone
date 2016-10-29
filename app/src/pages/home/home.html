@@ -4,7 +4,7 @@
 
     <ion-buttons end>
       <button ion-button icon-only (click)="presentFilter()">
-        <ion-icon ios="ios-calendar-outline" md="md-calendar"></ion-icon>
+        <ion-icon ios="ios-calendar" md="md-calendar"></ion-icon>
       </button>
     </ion-buttons>
 
@@ -51,7 +51,7 @@
       </ion-item>
 
       <ion-item>
-        <ion-icon ios="ios-car" md="md-car"></ion-icon>
+        <ion-icon ios="ios-car" md="md-car" item-left></ion-icon>
         Transporte
         <ion-badge item-right>$23.50</ion-badge>
       </ion-item>
@@ -64,5 +64,21 @@
       </ion-item>
     </ion-list>
   </ion-card>
+
+  <ion-footer no-shadow no-lines>
+    <ion-toolbar>
+      <button start ion-button color="" outline round icon-left>
+         <ion-icon name='ios-arrow-dropdown-outline' is-active="false"></ion-icon>
+         Solicitar pago
+       </button>
+
+       <button end ion-button color=""  outline round icon-right>
+          Relizar pago
+          <ion-icon name='ios-arrow-dropup-outline' outline is-active="false"></ion-icon>
+        </button>
+
+
+    </ion-toolbar>
+  </ion-footer>
 
 </ion-content>
