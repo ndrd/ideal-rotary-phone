@@ -1,9 +1,18 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Contact
+      Contactos
     </ion-title>
   </ion-navbar>
+
+  <ion-toolbar no-border-top>
+    <ion-searchbar
+                   [(ngModel)]="searchString"
+                   (ionInput)="searchContacts()"
+                   placeholder="Buscar contactos">
+    </ion-searchbar>
+  </ion-toolbar>
+
 </ion-header>
 
 <ion-content>
