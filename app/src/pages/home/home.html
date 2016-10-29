@@ -1,17 +1,68 @@
 <ion-header>
   <ion-navbar>
     <ion-title>Home</ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentFilter()">
+        <ion-icon ios="ios-calendar-outline" md="md-calendar"></ion-icon>
+      </button>
+    </ion-buttons>
+
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+
+  <ion-card>
+    <ion-card-header>
+      Resumen   
+    </ion-card-header>
+  <ion-card-content>
+    <h1>$3344.4</h1>
+  </ion-card-content>
+
+  </ion-card>
+
+
+  <ion-card>
+    <ion-card-header>
+      Esta semana   
+    </ion-card-header>
+
+    <ion-list>
+      <ion-item>
+        <ion-icon name="cart" item-left></ion-icon>
+        Otros
+        <ion-badge item-right>$23.50</ion-badge>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="home" item-left></ion-icon>
+        Hogar
+        <ion-badge item-right>$23.50</ion-badge>
+
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="cafe" item-left></ion-icon>
+        Comida
+        <ion-badge item-right>$23.50</ion-badge>
+
+      </ion-item>
+
+      <ion-item>
+        <ion-icon ios="ios-car" md="md-car"></ion-icon>
+        Transporte
+        <ion-badge item-right>$23.50</ion-badge>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="beer" item-left></ion-icon>
+        Diversion
+        <ion-badge item-right>$23.50</ion-badge>
+
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
 </ion-content>

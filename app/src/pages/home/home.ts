@@ -12,4 +12,17 @@ export class HomePage {
 
   }
 
+
+  presentFilter() {
+  //   let modal = this.modalCtrl.create(ScheduleFilterPage, this.excludeTracks);
+  //   modal.present();
+
+  //   modal.onDidDismiss((data: any[]) => {
+  //     if (data) {
+  //       this.excludeTracks = data;
+  //       this.updateSchedule();
+  //     }
+  //   });
+  }
+
 }
