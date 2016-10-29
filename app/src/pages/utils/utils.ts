@@ -1,47 +1,24 @@
 import { Component } from '@angular/core';
-import { NavController, ViewController, NavParams } from 'ionic-angular';
 
-/*import { NavParams, ViewController } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 
-  Generated class for the Utils page.
+import { TabsPage } from '../tabs/tabs';
+import { UserData } from '../../providers/user-data';
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
+
 @Component({
   selector: 'page-utils',
   templateUrl: 'utils.html'
 })
 export class CardReader {
+  creditCard: {ccv?: string, cardNumber?: string, until? : string} = {};
+  bannkAccount: { clabe? : string} = {};
+  submitted = false;
 
-  constructor(public navCtrl: NavController,
-  			  public navParams : NavParams,
-  			  public viewCtrl: ViewController
-) {
-	  // passed in array of track names that should be excluded (unchecked)
-	  let params = this.navParams.data;
-	  console.log(params);
+  constructor(public navCtrl: NavController, public userData: UserData) {}
 
-	}
-
-  ionViewDidLoad() {
-    console.log('Hello Utils Page');
-  }
-
-
-
-  resetFilters() {
+  onSignup(form) {
+    this.submitted = true;
 
   }
-
-  applyFilters() {
-
-  }
-
-  dismiss(data?: any) {
-    // using the injected ViewController this page
-    // can "dismiss" itself and pass back data
-    this.viewCtrl.dismiss(data);
-  }
-
 }

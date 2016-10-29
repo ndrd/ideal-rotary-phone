@@ -1,36 +1,75 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons start>
-      <button ion-button (click)="dismiss()">Cancel</button>
-    </ion-buttons>
-
-    <ion-title>
-      Filter Sessions
-    </ion-title>
-
-    <ion-buttons end>
-      <button ion-button (click)="applyFilters()">Done</button>
-    </ion-buttons>
-  </ion-toolbar>
+  <ion-navbar>
+    <ion-title>Agregar Cuenta</ion-title>
+    <button ion-button end menuToggle>
+      <ion-icon name="card"></ion-icon>
+    </button>
+  </ion-navbar>
 </ion-header>
 
-<ion-content class="outer-content">
+<ion-content class="login-page">
 
   <ion-list>
-    <ion-list-header>Tracks</ion-list-header>
 
-    <ion-item *ngFor="let track of tracks" [attr.track]="track.name | lowercase">
-      <span item-left class="dot"></span>
-      <ion-label>{{track.name}}</ion-label>
-      <ion-toggle [(ngModel)]="track.isChecked" color="secondary"></ion-toggle>
-    </ion-item>
+      <ion-list-header>
+        Agregar Tarjeta
+      </ion-list-header>      
+
+    <form #creditCardForm="ngForm" novalidate>
+      <ion-item>
+        <ion-label stacked color="primary">Numero</ion-label>
+        <ion-input [(ngModel)]="creditCard.number" name="creditCard" type="text" #creditCard="ngModel" required>
+        </ion-input>
+      </ion-item>
+      <p [hidden]="creditCard.valid || submitted == false" color="danger" padding-left>
+        El numero es requerido
+      </p>
+
+      <ion-item>
+        <ion-label stacked color="primary">Fecha de Caducidad</ion-label>
+        <ion-datetime displayFormat="MM/YYYY" name="until" [(ngModel)]="creditCard.until" #until="ngModel" ></ion-datetime>
+      </ion-item>
+      <p [hidden]="until.valid || submitted == false" color="danger" padding-left>
+        La fecha de caducidad es requerida
+      </p>
+
+      <ion-item>
+        <ion-label stacked color="primary">CCV</ion-label>
+        <ion-input [(ngModel)]="creditCard.ccv" name="CCV" type="password" #CCV="ngModel" required>
+        </ion-input>
+      </ion-item>
+      <p [hidden]="CCV.valid || submitted == false" color="danger" padding-left>
+        El CCV es requerido
+      </p>
+
+      <div padding>
+        <button ion-button (click)="onSignup(creditCardForm)" type="submit" block color="primary">Guardar</button>
+      </div>
+    </form>
 
   </ion-list>
 
   <ion-list>
-    <button ion-item (click)="resetFilters()" detail-none class="reset-filters">
-      Reset All Filters
-    </button>
+  
+      <ion-list-header>
+        Agregar CLABE
+      </ion-list-header>      
+
+    <form #clabeForm="ngForm" novalidate>
+      <ion-item>
+        <ion-label stacked color="primary">CLABE</ion-label>
+        <ion-input [(ngModel)]="bannkAccount.clabe" name="clabe" type="text" #clabe="ngModel" required>
+        </ion-input>
+      </ion-item>
+      <p [hidden]="clabe.valid || submitted == false" color="danger" padding-left>
+        La Clabe es requerida
+      </p>
+
+      <div padding>
+        <button ion-button (click)="onSignup(clabeForm)" type="submit" block color="primary">Guardar</button>
+      </div>
+    </form>
+
   </ion-list>
 
 </ion-content>
