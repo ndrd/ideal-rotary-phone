@@ -17,7 +17,7 @@ declare var qrCode: any;
   templateUrl: 'settings.html'
 })
 export class Settings {
-  private user : any; 
+  public user : any; 
   constructor(public navCtrl: NavController,
   			      public userData: UserData,
               public modalCtrl : ModalController) {
@@ -31,7 +31,7 @@ export class Settings {
       paymentAccounts : [],
       depositAccounts : [],
       defaultPaymentMethod : '',
-
+      defaultDepositMethod : ''
     };
 
     this.userData.loadUser().then( user => {

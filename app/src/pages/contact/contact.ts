@@ -7,12 +7,12 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'contact.html'
 })
 export class ContactPage {
-	private searchString : string;
+  public searchString : string;
   constructor(public navCtrl: NavController) {
   	this.searchString = '';
   }
 
-  private searchContacts($event) {
+  searchContacts() {
 
   }
 }

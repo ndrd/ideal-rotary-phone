@@ -36,14 +36,14 @@
       <ion-item>
   	    <ion-icon name='card' item-left></ion-icon>
         	<ion-label>Metodo de pago </ion-label>
-            <ion-select [(ngModel)]="defaultPaymentMethod" cancelText="Cancelar" okText="Guardar">
+            <ion-select [(ngModel)]="user.defaultPaymentMethod" cancelText="Cancelar" okText="Guardar">
               <ion-option *ngFor="let card of user.cards" [value]="card.id" >{{getNumber(card.number)}}</ion-option>
             </ion-select>
 	  	</ion-item>
 	  	<ion-item>
   	    	<ion-icon name='card' item-left></ion-icon>
         	<ion-label>Cuentas deposito </ion-label>
-            <ion-select [(ngModel)]="defaultDepositMethod" cancelText="Cancelar" okText="Guardar">
+            <ion-select [(ngModel)]="user.defaultDepositMethod" cancelText="Cancelar" okText="Guardar">
               <ion-option *ngFor="let card of user.cards" [value]="card.id" >{{getNumber(card.number)}}</ion-option>
             </ion-select>
 	  	</ion-item>

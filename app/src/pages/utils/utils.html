@@ -1,20 +1,28 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Agregar Cuenta</ion-title>
-    <button ion-button end menuToggle>
-      <ion-icon name="card"></ion-icon>
-    </button>
-  </ion-navbar>
+
+  <ion-toolbar>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">Cancelar</button>
+    </ion-buttons>
+
+    <ion-title>
+      Cuentas
+    </ion-title>
+
+  </ion-toolbar>
+
 </ion-header>
 
-<ion-content class="login-page">
+<ion-content class="outer-content">
 
   <ion-list>
 
       <ion-list-header>
-        Agregar Tarjeta
+       <button (click)="startScanner()" ion-item no-lines>
+            Escanear tarjeta
+         <ion-icon name="card" item-right></ion-icon>
+       </button>
       </ion-list-header>      
-
     <form #creditCardForm="ngForm" novalidate>
       <ion-item>
         <ion-label stacked color="primary">Numero</ion-label>
@@ -46,7 +54,6 @@
         <button ion-button (click)="onSignup(creditCardForm)" type="submit" block color="primary">Guardar</button>
       </div>
     </form>
-
   </ion-list>
 
   <ion-list>
