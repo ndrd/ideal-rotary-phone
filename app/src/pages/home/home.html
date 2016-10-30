@@ -83,14 +83,14 @@
       <ion-icon ios="ios-cash" md="md-cash"></ion-icon>
     </button>
     <ion-fab-list class="list" side="top">
-      <button ion-button color="primary" round icon-left>
+      <ion-item (click)="showPaymentView()"  color="primary" round icon-left>
         <ion-icon name='card' is-active="false"></ion-icon>
         Pagar
-      </button>           
-      <button ion-button color="primary" round icon-left>
+      </ion-item>           
+      <ion-item  (click)="showIncomingView()" color="primary" round icon-left>
         <ion-icon ios="ios-cloud-download" md="md-cloud-download"></ion-icon>
         Recibir
-      </button>
+      </ion-item>
 
     </ion-fab-list>
   </ion-fab>

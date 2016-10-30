@@ -6,13 +6,20 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>payments</ion-title>
-  </ion-navbar>
+  <ion-toolbar>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">Cancelar</button>
+    </ion-buttons>
+
+    <ion-title>
+      Solicitud de pago
+    </ion-title>
+
+  </ion-toolbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+	<p>{{data}}</p>
 </ion-content>

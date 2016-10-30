@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ViewController } from 'ionic-angular';
 
 /*
   Generated class for the Incomings page.
@@ -13,10 +13,16 @@ import { NavController } from 'ionic-angular';
 })
 export class Incomings {
 
-  constructor(public navCtrl: NavController) {}
+  constructor(public navCtrl: NavController,
+  			public viewCtrl: ViewController
+  	) {}
 
   ionViewDidLoad() {
     console.log('Hello Incomings Page');
+  }
+
+  dismiss(data?: any) {
+    this.viewCtrl.dismiss(data);
   }
 
 }

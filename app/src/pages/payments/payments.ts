@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ViewController} from 'ionic-angular';
+import {BarcodeScanner} from 'ionic-native';
+
 
 /*
   Generated class for the Payments page.
@@ -13,10 +15,30 @@ import { NavController } from 'ionic-angular';
 })
 export class Payments {
 
-  constructor(public navCtrl: NavController) {}
+	public data : any;
+
+  constructor(public navCtrl: NavController,
+  				public viewCtrl: ViewController
+  				) {
+  	this.data = {
+  		from : '',
+  		verified : true
+  	}
+  }
 
   ionViewDidLoad() {
     console.log('Hello Payments Page');
+    BarcodeScanner.scan().then((barcodeData) => {
+     	this.data =  barcodeData.text;
+    }, (err) => {
+        // An error occurred
+    });
+
   }
 
+
+
+  dismiss(data?: any) {
+    this.viewCtrl.dismiss(data);
+  }
 }
