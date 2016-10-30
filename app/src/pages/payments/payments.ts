@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, ViewController} from 'ionic-angular';
 import {BarcodeScanner, Dialogs} from 'ionic-native';
-
+import { PinDialog } from 'ionic-native';
 
 /*
   Generated class for the Payments page.
@@ -37,12 +37,19 @@ export class Payments {
   }
 
   authorizationIntent() {
-    Dialogs.confirm('Ingresa tu contraseña para verificar', 'Autorizar pago')
-        .then( res => {
-          console.log(res);
-        }).catch( err => {
+    // Dialogs.prompt('Ingresa tu contraseña para verificar', 'Autorizar pago')
+    //     .then( res => {
+    //       console.log(res);
+    //     }).catch( err => {
 
-        });
+    //     });
+    PinDialog.prompt('Enter your PIN', 'Verify PIN', ['OK', 'Cancel'])
+      .then(
+        (result: any) => {
+          if (result.buttonIndex == 1) console.log('User clicked OK, value is: ', result.input1);
+          else if(result.buttonIndex == 2) console.log('User cancelled');
+        }
+      );
   }
 
 

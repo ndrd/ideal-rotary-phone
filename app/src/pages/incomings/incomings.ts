@@ -50,7 +50,7 @@ export class Incomings {
     this.time = 100;
 
     this.qrGenerator = new QRCode("qrCode", {
-       text: <any> res.signedText,
+       text: <any> res['_id'],
        width: 128,
        height: 128,
        colorDark : "#006cbf",
@@ -65,7 +65,7 @@ export class Incomings {
       let resolved = false;
      this.time--;
      if (this.time % 3 == 0) {
-       this.userData.hasPayed(res.signedText)
+       this.userData.hasPayed(res['_id'])
         .then( res => {
             resolved = true;
             LocalNotifications.schedule({

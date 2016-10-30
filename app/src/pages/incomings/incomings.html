@@ -24,40 +24,40 @@
 
 	<ion-card>
 
-	    <div id="qr"></div>
+    <div id="qr"></div>
 
-	    <ion-card-content>
-	      <ion-list>
-			<div id="qrCode"></div>
-	        <ion-item *ngIf="!generated" >
-	          <ion-label stacked>Cantidad</ion-label>
-	          <ion-input class="ingress" [(ngModel)]="amount" type="number"></ion-input>
-	        </ion-item>
+    <ion-card-content>
+      <ion-list>
+		<div id="qrCode"></div>
+        <ion-item *ngIf="!generated" >
+          <ion-label stacked>Cantidad</ion-label>
+          <ion-input class="ingress" [(ngModel)]="amount" type="number"></ion-input>
+        </ion-item>
 
-	      </ion-list>
-	    </ion-card-content>
+      </ion-list>
+    </ion-card-content>
 
-	    <ion-row  no-padding>
-		    <ion-col *ngIf="generated"  text-center>
-		      <button ion-button clear small color="primary" icon-left>
-		        <ion-icon name='clock'></ion-icon>
-		        {{time}}
-		      </button>
-		    </ion-col>
-	      <ion-col *ngIf="!generated"  text-center>
-	        <button (click)="generateRequest()" ion-button clear small color="primary" icon-left>
-	          <ion-icon name='send'></ion-icon>
-	          Generar
-	        </button>
-	      </ion-col>
-	      <ion-col *ngIf="generated" text-right>
-	        <button (click)="cancelRequest()" ion-button clear small color="primary" icon-left>
-	          <ion-icon name='cancel'></ion-icon>
-	          Cancelar
-	        </button>
-	      </ion-col>
-	    </ion-row>
+    <ion-row  no-padding>
+	    <ion-col *ngIf="generated"  text-center>
+	      <button ion-button clear small color="primary" icon-left>
+	        <ion-icon name='clock'></ion-icon>
+	        {{time}}
+	      </button>
+	    </ion-col>
+      <ion-col *ngIf="!generated"  text-center>
+        <button (click)="generateRequest()" ion-button clear small color="primary" icon-left>
+          <ion-icon name='send'></ion-icon>
+          Generar
+        </button>
+      </ion-col>
+      <ion-col *ngIf="generated" text-right>
+        <button (click)="cancelRequest()" ion-button clear small color="primary" icon-left>
+          <ion-icon name='cancel'></ion-icon>
+          Cancelar
+        </button>
+      </ion-col>
+    </ion-row>
 
-	  </ion-card>
+  </ion-card>
 
 </ion-content>

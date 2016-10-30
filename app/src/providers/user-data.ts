@@ -80,7 +80,6 @@ export class UserData {
     return new Promise(resolve => {
         this.http.post(this.server + '/payment_request/' + this.user._id, data).subscribe( res => {
           let data = res.json();
-          this.data =  data;
           resolve(data);
         })
     }) 
@@ -90,7 +89,7 @@ export class UserData {
     return new Promise((resolve, reject) => {
         this.http.get(this.server + '/has_payed/' + transaction_id).subscribe( res => {
           let data = res.json();
-          if (this.data.hasPayed) {
+          if (data.hasPayed) {
             resolve(data);
           }
           reject(data);
