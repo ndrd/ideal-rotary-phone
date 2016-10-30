@@ -15,6 +15,26 @@
 
 <ion-content class="outer-content">
 
+<ion-list>
+
+    <ion-list-header>
+      Generar referencia OXXO
+    </ion-list-header>      
+    <img *ngIf="hasReference" [src]="barcodeImage">
+    <ion-item>
+      <ion-label stacked color="primary">Cantidad</ion-label>
+      <ion-input class="ingress"  [(ngModel)]="bankAccount.clabe" name="clabe" type="text" required>
+      </ion-input>
+    </ion-item>
+
+    <ion-item round outline>
+        <button (click)="generateReference()" ion-button full round >
+          Generar 
+        </button>
+      </ion-item>
+
+</ion-list>
+
   <ion-list>
 
       <ion-list-header>
@@ -56,24 +76,6 @@
         </ion-item>
     </ion-list>
 
-  <ion-list>
-  
-      <ion-list-header>
-        Generar referencia OXXO
-      </ion-list-header>      
-      <img src="data.barcode_url">
-      <ion-item>
-        <ion-label stacked color="primary">Cantidad</ion-label>
-        <ion-input [(ngModel)]="bankAccount.clabe" name="clabe" type="text" required>
-        </ion-input>
-      </ion-item>
 
-      <ion-item round outline>
-          <button (click)="generateReference()" ion-button full round >
-            Generar 
-          </button>
-        </ion-item>
-
-  </ion-list>
 
 </ion-content>

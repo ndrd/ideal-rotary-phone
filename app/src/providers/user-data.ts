@@ -9,7 +9,7 @@ export class UserData {
   _favorites = [];
   cell : string;
   HAS_LOGGED_IN = 'hasLoggedIn';
-  server = 'http://287aca80.ngrok.io/api';
+  server = 'https://api-qr-pay.herokuapp.com/api';
   user : any = {
     phone : '',
     cards : [],

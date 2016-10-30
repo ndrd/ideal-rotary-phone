@@ -14,8 +14,10 @@ export class CardReader {
   creditCard: {ccv?: string, cardNumber?: string, until? : string, number? : string} = {};
   bankAccount: { clabe? : string} = {};
   submitted = false;
-  response : any;
+  response : { data? : any};
   data : { barcode_url? : string};
+  hasReference : boolean =  false;
+  barcodeImage :  string = '';
 
   constructor(public navCtrl: NavController, 
               public userData: UserData,
@@ -56,8 +58,11 @@ export class CardReader {
     this.userData.requestOxxo(this.bankAccount)
       .then( res => {
         this.response = res;
+        this.barcodeImage  = res['data']['barcode_url'];
+        this.hasReference = true;
       }).catch(error => {
-        
+        this.hasReference = false;
+        console.log(error);
       })
   }
 
