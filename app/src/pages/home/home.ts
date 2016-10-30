@@ -3,6 +3,9 @@ import { UserData } from '../../providers/user-data';
 import { NavController, ModalController} from 'ionic-angular';
 import { Payments } from '../payments/payments';
 import { Incomings } from '../incomings/incomings';
+import {Geolocation} from 'ionic-native';
+
+declare var google: any;
 
 @Component({
   selector: 'page-home',
@@ -33,6 +36,29 @@ export class HomePage {
   //       this.updateSchedule();
   //     }
   //   });
+  }
+
+  ionViewDidLoad() {
+    let mapEle = document.getElementById('map');
+    
+    let center =  {
+         lat : 19.4152134,
+         lng : -99.17362419999999
+     };
+
+    let map = new google.maps.Map(mapEle, {
+      center: center,
+      zoom: 18
+    });
+
+    google.maps.event.addListenerOnce(map, 'idle', () => {
+      Geolocation.getCurrentPosition().then((position) => {
+        let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        map.setCenter(latLng);
+      }, (err) => {
+        console.log(err);
+      });
+    });
   }
 
   showPaymentView() {
