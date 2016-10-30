@@ -59,7 +59,6 @@ export class CardReader {
   }
 
   generateReference() {
-    this.hasReference = true;
     this.userData.requestOxxo(this.bankAccount)
       .then( res => {
         this.response = res;
