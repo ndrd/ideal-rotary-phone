@@ -7,8 +7,16 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Transactions</ion-title>
+    <ion-title>Transactiones</ion-title>
   </ion-navbar>
+
+  <ion-toolbar no-border-top>
+    <ion-searchbar
+                   [(ngModel)]="queryTransactions"
+                   (ionInput)="searchTransactions()"
+                   placeholder="Buscar en las transacciones">
+    </ion-searchbar>
+  </ion-toolbar>
 
 </ion-header>
 

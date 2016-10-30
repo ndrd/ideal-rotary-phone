@@ -7,9 +7,20 @@ import { Storage } from '@ionic/storage';
 @Injectable()
 export class UserData {
   _favorites = [];
-  user: any;
   cell : string;
   HAS_LOGGED_IN = 'hasLoggedIn';
+  server = 'https://api-qr-pay.herokuapp.com/api';
+  user : any = {
+    phone : '',
+    cards : [],
+    _id : '',
+    name : '',
+    accounts : [],
+    paymentAccounts : [],
+    depositAccounts : [],
+    defaultPaymentMethod : '',
+    defaultDepositMethod : ''
+  };
 
   constructor(public events: Events, 
              public storage: Storage,
@@ -33,6 +44,78 @@ export class UserData {
 
   hasFavorite(sessionName) {
     return (this._favorites.indexOf(sessionName) > -1);
+  }
+
+  savePaymentMethod(data :  any) {
+    return new Promise(resolve => {
+        this.http.post(this.server + '/users/' + this.user._id, data).subscribe( res => {
+          let user = res.json();
+          this.user =  user;
+          resolve(user);
+        })
+    })
+  }
+
+  deletePaymentMethod(id : string) {
+    return new Promise(resolve => {
+        this.http.post(this.server + '/users/' + this.user._id + '/payments/' + id, {} ).subscribe( res => {
+          let user = res.json();
+          this.user =  user;
+          resolve(user);
+        })
+    })
+  }
+
+  requestPaymentTo(data : any) {
+    return new Promise(resolve => {
+        this.http.post(this.server + '/payment_request/' + this.user._id, data).subscribe( res => {
+          let user = res.json();
+          this.user =  user;
+          resolve(user);
+        })
+    }) 
+  }
+
+  sendPaymentTo(data : any) {
+    return new Promise(resolve => {
+        this.http.post(this.server + '/payment_request/' + this.user._id, data).subscribe( res => {
+          let user = res.json();
+          this.user =  user;
+          resolve(user);
+        })
+    })
+  }
+
+  getContacts(data : any) {
+    return new Promise(resolve => {
+        this.http.get(this.server + '/users/' + this.user._id + '/contacts', data).subscribe( res => {
+          let user = res.json();
+          this.user =  user;
+          resolve(user);
+        })
+    })
+  }
+
+  getTransactions(data :  any) {
+    return new Promise(resolve => {
+        //let  url = this.server + '/users/' + this.user._id;
+        let url = 'assets/data/transactions.json';
+        this.http.get(url, data).subscribe( res => {
+          let user = res.json();
+          this.user =  user;
+          resolve(user);
+        })
+    })
+  }
+
+  getBalance(data :  any) {
+    return new Promise(resolve => {
+        this.http.get(this.server + '/users/' + this.user._id + '/balance', data).subscribe( res => {
+          let user = res.json();
+          this.user =  user;
+          resolve(user);
+        })
+    })
   }
 
   addFavorite(sessionName) {

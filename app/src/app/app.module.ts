@@ -7,6 +7,8 @@ import { HomePage } from '../pages/home/home';
 import { Settings } from '../pages/settings/settings';
 import { CardReader } from '../pages/utils/utils';
 import { Transactions } from '../pages/transactions/transactions';
+import { Payments } from '../pages/payments/payments';
+import { Incomings} from '../pages/incomings/incomings';
 import { TabsPage } from '../pages/tabs/tabs';
 import { UserData } from '../providers/user-data';
 import { Storage } from '@ionic/storage';
@@ -20,6 +22,8 @@ import { Storage } from '@ionic/storage';
     Settings,
     CardReader,
     Transactions,
+    Payments,
+    Incomings,
     TabsPage
   ],
   imports: [
@@ -34,6 +38,8 @@ import { Storage } from '@ionic/storage';
     Settings,
     CardReader,
     Transactions,
+    Payments,
+    Incomings,
     TabsPage
   ],
   providers: [UserData, Storage]

@@ -25,11 +25,10 @@ export class CardReader {
   }
 
   processData(data : any) {
-
     this.creditCard.cardNumber = data.card_number;
     this.creditCard.number = data.card_number;
     this.creditCard.ccv = data.ccv;
-    this.creditCard.until = data.expiry_month + '/' + data.expiry_year;
+    this.creditCard.until = data.expiry_month + '-' + data.expiry_year;
   }
 
   startScanner()  {
@@ -45,7 +44,6 @@ export class CardReader {
                hideLogo : true
              };
              CardIO.scan(options).then( data => {
-               this.response =  data;
                this.processData(this.response);
              } );
            }
@@ -53,9 +51,12 @@ export class CardReader {
        );
   }
 
-  save(data : any) {
+  save(data : any, type : string) {
     console.log('save', data);
-    this.dismiss(data);
+    this.dismiss({
+      data :  data,
+      type : type
+    });
   }
 
   dismiss(data?: any) {

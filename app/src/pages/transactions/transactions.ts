@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
+import { UserData } from '../../providers/user-data';
+
 /*
   Generated class for the Transactions page.
 
@@ -13,10 +15,24 @@ import { NavController } from 'ionic-angular';
 })
 export class Transactions {
 
-  constructor(public navCtrl: NavController) {}
+  public transactions :  any [] = [];
+  public queryTransactions : string = '';
+
+  constructor(public navCtrl: NavController,
+  			  public userData :  UserData) {
+  	this.queryTransactions =  '';
+  }
 
   ionViewDidLoad() {
     console.log('Hello Transactions Page');
+    this.userData.getTransactions({}).then( res => {
+    	this.transactions  = <any[]> res;
+    	console.log(this.transactions);
+    })
+  }
+
+  searchTransactions($event) {
+
   }
 
 }
