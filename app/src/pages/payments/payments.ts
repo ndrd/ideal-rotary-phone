@@ -37,19 +37,20 @@ export class Payments {
   }
 
   authorizationIntent() {
-    // Dialogs.prompt('Ingresa tu contraseña para verificar', 'Autorizar pago')
-    //     .then( res => {
-    //       console.log(res);
-    //     }).catch( err => {
+    Dialogs.prompt('Ingresa tu contraseña para verificar', 'Autorizar pago')
+        .then( res => {
+          console.log(res);
+          this.dismiss({});
+        }).catch( err => {
 
-    //     });
-    PinDialog.prompt('Enter your PIN', 'Verify PIN', ['OK', 'Cancel'])
-      .then(
-        (result: any) => {
-          if (result.buttonIndex == 1) console.log('User clicked OK, value is: ', result.input1);
-          else if(result.buttonIndex == 2) console.log('User cancelled');
-        }
-      );
+        });
+    // PinDialog.prompt('Enter your PIN', 'Verify PIN', ['OK', 'Cancel'])
+    //   .then(
+    //     (result: any) => {
+    //       if (result.buttonIndex == 1) console.log('User clicked OK, value is: ', result.input1);
+    //       else if(result.buttonIndex == 2) console.log('User cancelled');
+    //     }
+    //   );
   }
 
 
