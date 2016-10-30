@@ -9,7 +9,7 @@ export class UserData {
   _favorites = [];
   cell : string;
   HAS_LOGGED_IN = 'hasLoggedIn';
-  server = 'https://api-qr-pay.herokuapp.com/api';
+  server = 'http://287aca80.ngrok.io/api';
   user : any = {
     phone : '',
     cards : [],
@@ -100,6 +100,16 @@ export class UserData {
   sendPaymentTo(data : any) {
     return new Promise(resolve => {
         this.http.post(this.server + '/payment_request/' + this.user._id, data).subscribe( res => {
+          let user = res.json();
+          this.user =  user;
+          resolve(user);
+        })
+    })
+  }
+
+   requestOxxo(data : any) {
+    return new Promise(resolve => {
+        this.http.post(this.server + '/user/' + this.user._id + '/payment_oxxo' , data).subscribe( res => {
           let user = res.json();
           this.user =  user;
           resolve(user);

@@ -59,18 +59,18 @@
   <ion-list>
   
       <ion-list-header>
-        Agregar CLABE
+        Generar referencia OXXO
       </ion-list-header>      
-
+      <img src="data.barcode_url">
       <ion-item>
-        <ion-label stacked color="primary">CLABE</ion-label>
+        <ion-label stacked color="primary">Cantidad</ion-label>
         <ion-input [(ngModel)]="bankAccount.clabe" name="clabe" type="text" required>
         </ion-input>
       </ion-item>
 
       <ion-item round outline>
-          <button (click)="save(bankAccount, 'clave')" ion-button full round >
-            Guardar 
+          <button (click)="generateReference()" ion-button full round >
+            Generar 
           </button>
         </ion-item>
 

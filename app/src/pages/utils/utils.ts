@@ -15,6 +15,7 @@ export class CardReader {
   bankAccount: { clabe? : string} = {};
   submitted = false;
   response : any;
+  data : { barcode_url? : string};
 
   constructor(public navCtrl: NavController, 
               public userData: UserData,
@@ -49,6 +50,15 @@ export class CardReader {
            }
          }
        );
+  }
+
+  generateReference() {
+    this.userData.requestOxxo(this.bankAccount)
+      .then( res => {
+        this.response = res;
+      }).catch(error => {
+        
+      })
   }
 
   save(data : any, type : string) {

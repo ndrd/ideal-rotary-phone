@@ -26,7 +26,7 @@
 
       <ion-card-content>
         <ion-list>
-          <ion-item *ngIf="!generated" >
+          <ion-item  >
             <ion-label stacked>Cantidad</ion-label>
             <ion-input class="ingress" disabled="true" [(ngModel)]="amount" type="number"></ion-input>
           </ion-item>
@@ -35,7 +35,7 @@
       </ion-card-content>
 
       <ion-row  no-padding>
-        <ion-col *ngIf="generated"  text-center>
+        <ion-col   text-center>
           <ion-item>
              <ion-avatar item-left>
                <img src="https://placeholdit.imgix.net/~text?txtsize=9&txt=70%C3%9770&w=70&h=70">

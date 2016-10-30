@@ -43,7 +43,8 @@ export class Incomings {
     this.loader.present();
     
     let request = {
-
+      amount : 200,
+      title : 'Nop'
     };
 
     this.userData.signPayment(request).then( res => {

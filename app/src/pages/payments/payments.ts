@@ -16,6 +16,7 @@ import { PinDialog } from 'ionic-native';
 export class Payments {
 
 	public data : any;
+  public amount : number;
 
   constructor(public navCtrl: NavController,
   				public viewCtrl: ViewController
