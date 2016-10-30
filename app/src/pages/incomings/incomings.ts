@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, ViewController, LoadingController } from 'ionic-angular';
 import { Dialogs, LocalNotifications } from 'ionic-native';
-
+import { UserData } from '../../providers/user-data';
 declare var QRCode;
 
 /*
@@ -24,12 +24,12 @@ export class Incomings {
 
   constructor(public navCtrl: NavController,
   			public viewCtrl: ViewController,
-        public loadingCtrl: LoadingController  	
+        public loadingCtrl: LoadingController,
+        public userData : UserData  	
       ) {
 
     this.loader = this.loadingCtrl.create({
       content: "Generando peticion..",
-      duration: 1000
     });
 
   }
@@ -41,36 +41,59 @@ export class Incomings {
 
   generateRequest() {
     this.loader.present();
-    console.log('generating');
     
+    let request = {
+
+    };
+
+    this.userData.signPayment(request).then( res => {
     this.time = 100;
 
-    LocalNotifications.schedule({
-       text: 'Delayed Notification',
-       at: new Date(new Date().getTime() + 500),
-       led: 'FF0000',
-       sound: null
+    this.qrGenerator = new QRCode("qrCode", {
+       text: <any> res.signedText,
+       width: 128,
+       height: 128,
+       colorDark : "#006cbf",
+       colorLight : "#ffffff",
+       correctLevel : QRCode.CorrectLevel.H
     });
 
-    this.qrGenerator = new QRCode("qrCode", {
-        text: this.getSignedPetition(),
-        width: 128,
-        height: 128,
-        colorDark : "#006cbf",
-        colorLight : "#ffffff",
-        correctLevel : QRCode.CorrectLevel.H
-    });
-    
+    this.loader.dismiss();
     this.generated = true;
 
     let weirdID = setInterval( () => {
-      this.time--;
-      console.log('time', this.time);
-      if (this.time == 0) {
-        clearInterval(weirdID);
-        this.time  = 100; 
-      }
+      let resolved = false;
+     this.time--;
+     if (this.time % 3 == 0) {
+       this.userData.hasPayed(res.signedText)
+        .then( res => {
+            resolved = true;
+            LocalNotifications.schedule({
+               text: 'Se ha realizado la transferencia a tu cuenta',
+               at: new Date(new Date().getTime() + 5),
+               led: 'FF0000',
+               icon : 'http://jea.solutions/images/icon.png'
+            });
+        }).catch( error => {
+
+        });
+     }
+     if (this.time == 0 || resolved) {
+       clearInterval(weirdID);
+       this.time  = 100;
+       if (resolved) {
+         this.dismiss({success : true});
+       } else {
+         this.dismiss();
+       }
+     }
     }, 1000);
+
+    }).catch( error => {
+      this.loader.dismiss();
+      Dialogs.alert('Verifica tu conexión a internet', 'Oh Oh ...', 'Ok')
+    });
+
   }
 
   cancelRequest() {

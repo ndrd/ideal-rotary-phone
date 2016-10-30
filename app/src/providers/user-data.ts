@@ -76,6 +76,28 @@ export class UserData {
     }) 
   }
 
+  signPayment(data : any) {
+    return new Promise(resolve => {
+        this.http.post(this.server + '/payment_request/' + this.user._id, data).subscribe( res => {
+          let data = res.json();
+          this.data =  data;
+          resolve(data);
+        })
+    }) 
+  }
+
+  hasPayed(transaction_id : string) {
+    return new Promise((resolve, reject) => {
+        this.http.get(this.server + '/has_payed/' + transaction_id).subscribe( res => {
+          let data = res.json();
+          if (this.data.hasPayed) {
+            resolve(data);
+          }
+          reject(data);
+        });
+    }) 
+  }
+
   sendPaymentTo(data : any) {
     return new Promise(resolve => {
         this.http.post(this.server + '/payment_request/' + this.user._id, data).subscribe( res => {
