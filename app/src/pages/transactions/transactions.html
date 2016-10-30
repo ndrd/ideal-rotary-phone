@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Transactiones</ion-title>
+    <ion-title>Transacciones</ion-title>
   </ion-navbar>
 
   <ion-toolbar no-border-top>
@@ -22,5 +22,21 @@
 
 
 <ion-content padding>
+
+<ion-list  *ngFor="let day of transactions"  >
+
+   <ion-list-header>{{day.date}}</ion-list-header>
+
+   <ion-item *ngFor="let transaction of day.data" >
+     <ion-icon *ngIf="transaction.type == 'incoming'" name="card" item-left></ion-icon>
+     <ion-icon *ngIf="transaction.type != 'incoming'" name="cash" item-left></ion-icon>
+     <h2>{{transaction.amount}}</h2>
+     <p>{{transaction.to.name}}</p>
+     <ion-note item-right>{{transaction.registered}}</ion-note>
+   </ion-item>
+
+
+ </ion-list>
+
 
 </ion-content>

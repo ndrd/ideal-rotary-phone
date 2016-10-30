@@ -88,7 +88,9 @@ export class UserData {
 
   getContacts(data : any) {
     return new Promise(resolve => {
-        this.http.get(this.server + '/users/' + this.user._id + '/contacts', data).subscribe( res => {
+        //let url = this.server + '/users/' + this.user._id + '/contacts';
+        let url =  'assets/data/friends.json'
+        this.http.get(url, data).subscribe( res => {
           let user = res.json();
           this.user =  user;
           resolve(user);
@@ -99,7 +101,7 @@ export class UserData {
   getTransactions(data :  any) {
     return new Promise(resolve => {
         //let  url = this.server + '/users/' + this.user._id;
-        let url = 'assets/data/transactions.json';
+        let url = 'assets/data/transa.json';
         this.http.get(url, data).subscribe( res => {
           let user = res.json();
           this.user =  user;
