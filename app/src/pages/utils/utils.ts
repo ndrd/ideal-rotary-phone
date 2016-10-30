@@ -12,8 +12,9 @@ import { CardIO } from 'ionic-native';
 })
 export class CardReader {
   creditCard: {ccv?: string, cardNumber?: string, until? : string, number? : string} = {};
-  bannkAccount: { clabe? : string} = {};
+  bankAccount: { clabe? : string} = {};
   submitted = false;
+  response : any;
 
   constructor(public navCtrl: NavController, 
               public userData: UserData,
@@ -21,6 +22,14 @@ export class CardReader {
 
   onSignup(form) {
     this.submitted = true;
+  }
+
+  processData(data : any) {
+
+    this.creditCard.cardNumber = data.card_number;
+    this.creditCard.number = data.card_number;
+    this.creditCard.ccv = data.ccv;
+    this.creditCard.until = data.expiry_month + '/' + data.expiry_year;
   }
 
   startScanner()  {
@@ -31,15 +40,22 @@ export class CardReader {
            if(res){
              let options = {
                requireExpiry: true,
-               requireCCV: false,
-               requirePostalCode: false
+               requireCCV: true,
+               requirePostalCode: false,
+               hideLogo : true
              };
              CardIO.scan(options).then( data => {
-               alert(data);
+               this.response =  data;
+               this.processData(this.response);
              } );
            }
          }
        );
+  }
+
+  save(data : any) {
+    console.log('save', data);
+    this.dismiss(data);
   }
 
   dismiss(data?: any) {

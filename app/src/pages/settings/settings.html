@@ -54,8 +54,8 @@
 	  		Metodos de pago
 	  	</ion-item-divider>
 
-		<button (click)="addPayment()" ion-item>
-		    Agregar metodo de pago
+		<button color="principal" (click)="addPayment()" ion-button round outline>
+			Agregar método de pago
 		</button>
 
 		<ion-item-sliding *ngFor="let card of user.cards">

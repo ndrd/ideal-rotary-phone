@@ -23,7 +23,6 @@
          <ion-icon name="card" item-right></ion-icon>
        </button>
       </ion-list-header>      
-    <form #creditCardForm="ngForm" padding-top novalidate>
       <ion-item>
         <ion-label stacked color="primary">Numero</ion-label>
         <ion-input [(ngModel)]="creditCard.number" name="creditCard" type="text" required>
@@ -50,11 +49,12 @@
         El CCV es requerido
       </p> -->
 
-      <div padding>
-        <button ion-button (click)="onSignup(creditCardForm)" type="submit" block color="primary">Guardar</button>
-      </div>
-    </form>
-  </ion-list>
+      <ion-item round outline>
+          <button (click)="save(creditCard)" ion-button full round >
+            Guardar 
+          </button>
+        </ion-item>
+    </ion-list>
 
   <ion-list>
   
@@ -62,20 +62,17 @@
         Agregar CLABE
       </ion-list-header>      
 
-    <form #clabeForm="ngForm" padding-top novalidate>
       <ion-item>
         <ion-label stacked color="primary">CLABE</ion-label>
-        <ion-input [(ngModel)]="bannkAccount.clabe" name="clabe" type="text" required>
+        <ion-input [(ngModel)]="bankAccount.clabe" name="clabe" type="text" required>
         </ion-input>
       </ion-item>
-<!--       <p [hidden]="clabe.valid || submitted == false" color="danger" padding-left>
-        La Clabe es requerida
-      </p> -->
 
-      <div padding>
-        <button ion-button (click)="onSignup(clabeForm)" type="submit" block color="primary">Guardar</button>
-      </div>
-    </form>
+      <ion-item round outline>
+          <button (click)="save(bankAccount)" ion-button full round >
+            Guardar 
+          </button>
+        </ion-item>
 
   </ion-list>
 
