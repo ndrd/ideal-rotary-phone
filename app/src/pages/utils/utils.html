@@ -1,4 +1,4 @@
-<ion-header color="principal">
+<ion-header color="primary">
 
   <ion-toolbar>
     <ion-buttons start>
@@ -19,11 +19,14 @@
 
     <ion-list-header>
       Generar referencia OXXO
-    </ion-list-header>      
-    <img *ngIf="hasReference" [src]="barcodeImage">
+    </ion-list-header> 
+    <div padding *ngIf="hasReference">
+      <img class="full"  [src]="barcodeImage">
+      <p text-align="center">{{barcode}}</p>
+    </div> 
     <ion-item>
       <ion-label stacked color="primary">Cantidad</ion-label>
-      <ion-input class="ingress"  [(ngModel)]="bankAccount.clabe" name="clabe" type="text" required>
+      <ion-input class="ingress"  [(ngModel)]="bankAccount.clabe" name="clabe" type="number" required>
       </ion-input>
     </ion-item>
 

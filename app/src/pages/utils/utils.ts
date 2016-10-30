@@ -18,10 +18,14 @@ export class CardReader {
   data : { barcode_url? : string};
   hasReference : boolean =  false;
   barcodeImage :  string = '';
+  barcode :  string = '';
 
   constructor(public navCtrl: NavController, 
               public userData: UserData,
-              public viewCtrl: ViewController) {}
+              public viewCtrl: ViewController) {
+    this.barcodeImage =  'http://s3.amazonaws.com/cash_payment_barcodes/38100000000042290121213001160013.png';
+     this.barcode = '38100000000042290121213001160013';
+  }
 
   onSignup(form) {
     this.submitted = true;
@@ -55,10 +59,12 @@ export class CardReader {
   }
 
   generateReference() {
+    this.hasReference = true;
     this.userData.requestOxxo(this.bankAccount)
       .then( res => {
         this.response = res;
         this.barcodeImage  = res['data']['barcode_url'];
+        this.barcode  = res['data']['barcode'];
         this.hasReference = true;
       }).catch(error => {
         this.hasReference = false;
