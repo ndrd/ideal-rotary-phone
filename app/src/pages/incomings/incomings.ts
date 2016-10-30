@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, ViewController, LoadingController } from 'ionic-angular';
+import { Dialogs, LocalNotifications } from 'ionic-native';
 
 declare var QRCode;
 
@@ -19,12 +20,13 @@ export class Incomings {
   generated : boolean = false;
   amount : string = '';
   qrGenerator  : any = {};
+  time : number  = 60;
 
   constructor(public navCtrl: NavController,
   			public viewCtrl: ViewController,
-        public loadingCtrl: LoadingController
-  	) {
-    console.log(QRCode);
+        public loadingCtrl: LoadingController  	
+      ) {
+
     this.loader = this.loadingCtrl.create({
       content: "Generando peticion..",
       duration: 1000
@@ -39,7 +41,17 @@ export class Incomings {
 
   generateRequest() {
     this.loader.present();
-    console.log('generating')
+    console.log('generating');
+    
+    this.time = 100;
+
+    LocalNotifications.schedule({
+       text: 'Delayed Notification',
+       at: new Date(new Date().getTime() + 500),
+       led: 'FF0000',
+       sound: null
+    });
+
     this.qrGenerator = new QRCode("qrCode", {
         text: this.getSignedPetition(),
         width: 128,
@@ -48,13 +60,23 @@ export class Incomings {
         colorLight : "#ffffff",
         correctLevel : QRCode.CorrectLevel.H
     });
+    
     this.generated = true;
+
+    let weirdID = setInterval( () => {
+      this.time--;
+      console.log('time', this.time);
+      if (this.time == 0) {
+        clearInterval(weirdID);
+        this.time  = 100; 
+      }
+    }, 1000);
   }
 
   cancelRequest() {
-    this.loader.close();
     this.qrGenerator.clear();
     this.generated = false;
+    this.dismiss();
   }
 
   getSignedPetition() {

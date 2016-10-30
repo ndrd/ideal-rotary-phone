@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, ViewController} from 'ionic-angular';
-import {BarcodeScanner} from 'ionic-native';
+import {BarcodeScanner, Dialogs} from 'ionic-native';
 
 
 /*
@@ -34,6 +34,15 @@ export class Payments {
         // An error occurred
     });
 
+  }
+
+  authorizationIntent() {
+    Dialogs.confirm('Ingresa tu contraseña para verificar', 'Autorizar pago')
+        .then( res => {
+          console.log(res);
+        }).catch( err => {
+
+        });
   }
 
 
